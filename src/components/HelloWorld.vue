@@ -6,8 +6,8 @@
 
 <script>
 import echarts from "echarts";
-import "echarts/map/js/china.js";
 import jsonp from "jsonp";
+import "echarts/map/js/china.js";
 
 const option = {
   title: {
@@ -15,9 +15,9 @@ const option = {
     textStyle: { fontSize: 20 },
     subtext: "更多信息",
     subtextStyle: {
-      fontSize: 18,
+      fontSize: 18
     },
-    sublink: "http://sinovision.net/newpneumonia.php",
+    sublink: "http://sinovision.net/newpneumonia.php"
   },
   series: [
     {
@@ -26,22 +26,22 @@ const option = {
       map: "china",
       label: {
         show: true, //显示各个省份名称
-        fontSize: 8,
+        fontSize: 8
       },
       itemStyle: {
         areaColor: "#fff", //区域的背景颜色
-        borderColor: "blue",
+        borderColor: "blue"
       },
       emphasis: {
         //控制鼠标滑过时的高亮样式
         itemStyle: {
-          areaColor: "#c7fffd",
-        },
+          areaColor: "#c7fffd"
+        }
       },
       data: [],
       roam: true,
-      zoom: 1.2, //控制地图的大小
-    },
+      zoom: 1.2 //控制地图的大小
+    }
   ],
   visualMap: [
     {
@@ -50,37 +50,37 @@ const option = {
       splitNumber: 6,
       pieces: [
         {
-          min: 10000,
+          min: 10000
         }, // 不指定 max，表示 max 为无限大（Infinity）。
         {
           min: 1000,
-          max: 9999,
+          max: 9999
         },
         {
           min: 100,
-          max: 999,
+          max: 999
         },
         {
           min: 10,
-          max: 99,
+          max: 99
         },
         {
           min: 1,
-          max: 9,
+          max: 9
         },
         {
           min: 0,
-          max: 0,
-        },
+          max: 0
+        }
       ],
       //align:'right' // 默认是left
       inRange: {
         symbol: "rect",
-        color: ["#fff", "#ffaa85", "#ff7b69", "#cc2929", "#8c0d0d", "#660208"],
+        color: ["#fff", "#ffaa85", "#ff7b69", "#cc2929", "#8c0d0d", "#660208"]
       },
       itemHeight: 10,
-      itemWidth: 20,
-    },
+      itemWidth: 20
+    }
   ],
   tooltip: {
     // position: function(pos, params, dom, rect, size) {
@@ -89,7 +89,7 @@ const option = {
     //   obj[["left", "right"][+(pos[0] < size.viewSize[0] / 2)]] = 5;
     //   return obj;
     // },
-  },
+  }
 };
 export default {
   name: "HelloWorld",
@@ -105,17 +105,17 @@ export default {
         {},
         (err, data) => {
           if (!err) {
-            var list = data.data.list.map((item) => ({
+            var list = data.data.list.map(item => ({
               name: item.name,
-              value: item.value,
+              value: item.value
             }));
             option.series[0].data = list;
             this.mychart.setOption(option); //数据更新
           }
         }
       );
-    },
-  },
+    }
+  }
 };
 </script>
 
